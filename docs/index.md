@@ -27,7 +27,7 @@ Chaque rencontre devient une occasion de créer du lien, d’échanger et de s�
 
 Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouvrira votre logiciel de messagerie avec un e-mail prérempli.
 
-<form action="mailto:asso.jeuxvaux@gmail.com" method="post" enctype="text/plain">
+<form id="contact-form">
 	<p>
 		<label for="nom">Nom</label>
 		<input type="text" id="nom" name="Nom" autocomplete="name" required>

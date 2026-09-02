@@ -42,6 +42,19 @@
       });
 
       await mermaid.run();
+
+      const contactForm = document.getElementById('contact-form');
+      contactForm?.addEventListener('submit', event => {
+        event.preventDefault();
+
+        const formData = new FormData(contactForm);
+        const subject = encodeURIComponent('Message depuis le site Jeux Vaux');
+        const body = encodeURIComponent(
+          `Nom : ${formData.get('Nom')}\nE-mail : ${formData.get('E-mail')}\n\n${formData.get('Message')}`
+        );
+
+        window.location.href = `mailto:asso.jeuxvaux@gmail.com?subject=${subject}&body=${body}`;
+      });
     });
     </script>
   </head>
@@ -80,6 +93,7 @@
 
   <footer>
     <section class="footer-legal" aria-labelledby="legal-title">
+      <div class="card">
       <h2 id="legal-title">Mentions légales</h2>
       <h3>Éditeur du site</h3>
       <p>Ce site est édité par <a href="https://syntoralis.eu">Syntoralis</a> pour l’association Jeux Vaux, association à but non lucratif régie par la loi du 1er juillet 1901.</p>
@@ -97,6 +111,7 @@
       <h3>Données personnelles</h3>
       <p>Les informations transmises par e-mail sont utilisées uniquement pour répondre aux demandes adressées à l’association. Elles ne sont pas cédées à des tiers à des fins commerciales.</p>
       <p>Pour exercer vos droits d’accès, de rectification ou de suppression, contactez l’association à l’adresse <a href="mailto:asso.jeuxvaux@gmail.com">asso.jeuxvaux@gmail.com</a>.</p>
+    </div>
     </section>
 
     <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%; max-width: 800px; margin: 1rem auto 0; gap: 1rem;">
