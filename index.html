@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="https://syntoralis.github.io/JeuxVaux/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Association Jeux Vaux - Site de l'Association Jeux Vaux.">
+    <meta name="keywords" content="Association Jeux Vaux, jeux, Vaux-sur-Seine, club de jeux, activités ludiques">
+    <meta name="author" content="Syntoralis EURL">
+    <meta name="image" property="og:image" content="https://syntoralis.github.io/JeuxVaux/img/logo.png">
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="fr" href="https://syntoralis.github.io/JeuxVaux/index.html">
+    <link rel="canonical" href="https://syntoralis.github.io/JeuxVaux/index.html">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Association Jeux Vaux">
+    <meta property="og:description" content="Site de l'Association Jeux Vaux.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://syntoralis.github.io/JeuxVaux">
+    <meta property="og:image" content="https://syntoralis.github.io/JeuxVaux/img/logo.png">
+    <meta property="og:locale" content="fr_FR">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Association Jeux Vaux">
+    <meta name="twitter:description" content="Site de l'Association Jeux Vaux.">
+    <meta name="twitter:image" content="https://syntoralis.github.io/JeuxVaux/img/logo.png">
+    <title>Bienvenue sur le site de l'association Jeux Vaux</title>
+    <link rel="stylesheet" href="/JeuxVaux/assets/css/style.css">
+    <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+    mermaid.initialize({
+      startOnLoad: false
+    });
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      document.querySelectorAll('code.language-mermaid').forEach(code => {
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = code.textContent;
+
+        code.parentElement.replaceWith(div);
+      });
+
+      await mermaid.run();
+    });
+    </script>
+  </head>
+  <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- HEADER -->
+  <header>
+    <div class="header-content">   
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle between light and dark mode">
+          <svg id="themeIcon" role="img" aria-label="Theme icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path class="sun-icon" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" style="display: none;" />         
+            <path class="moon-icon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+          <span id="themeText">Dark mode</span>
+        </button>
+    </div>
+  </header>
+
+    <main  id="main-content">
+      <section class="hero">
+      <h1>ASSOCIATION JEUX VAUX</h1>
+    </section>
+      <section class="section">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <p>En cours</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  <footer>
+    <p>®2026 Syntoralis EURL. All rights reserved.</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%; max-width: 800px; margin: 1rem auto 0; gap: 1rem;">
+      <div style="flex: 1 1 150px; text-align: center; max-width: 200px;">
+        <div id="ecoindex-badge"></div>        
+      </div>
+      </div>
+    <script src="https://syntoralis.eu/script.js" defer></script>
+  </footer>
+  </body>
+</html>
