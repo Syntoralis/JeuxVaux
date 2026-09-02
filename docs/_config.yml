@@ -1,0 +1,10 @@
+title: Association Jeux Vaux
+description: "Site de l'Association Jeux Vaux"
+markdown: kramdown
+plugins:
+  - jekyll-feed
+url: "https://syntoralis.github.io"
+baseurl: "/JeuxVaux/"
+sass:
+  style: compressed
+
