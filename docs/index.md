@@ -17,6 +17,15 @@ Jeux de société, défis amusants, animations ludiques, jeux coopératifs ou co
 
 Chaque rencontre devient une occasion de créer du lien, d’échanger et de s’amuser ensemble.
 
+## Découvrez Jeux Vaux en vidéo
+
+<video class="association-video" controls preload="metadata">
+	<source src="{{ '/video/2026-2027JeuxVauxDiaporama.mp4' | relative_url }}" type="video/mp4">
+	Votre navigateur ne prend pas en charge la lecture vidéo. <a href="{{ '/video/2026-2027JeuxVauxDiaporama.mp4' | relative_url }}">Télécharger la vidéo</a>.
+</video>
+
+
+
 ## Liens utiles
 
 - [Télécharger le bulletin d’adhésion 2026-2027]({{ '/assets/pdf/Bulletin Adhésion 2026-2027.pdf' | relative_url }})
