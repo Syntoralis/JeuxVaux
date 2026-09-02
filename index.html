@@ -90,39 +90,29 @@
 
 <ul>
   <li><a href="/JeuxVaux/assets/pdf/Bulletin%20Adh%C3%A9sion%202026-2027.pdf">Télécharger le bulletin d’adhésion 2026-2027</a></li>
+  <li><a href="/JeuxVaux/assets/pdf/Reglement%20Int%C3%A9rieur%20Saison%202026%202027.pdf">Télécharger le règlement intérieur 2026-2027</a></li>
   <li><a href="https://www.facebook.com/groups/1741403396511568">Rejoindre notre groupe Facebook</a></li>
 </ul>
 
 <h2 id="nous-contacter">Nous contacter</h2>
 
-<h2 id="mentions-légales">Mentions légales</h2>
+<p>Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouvrira votre logiciel de messagerie avec un e-mail prérempli.</p>
 
-<h3 id="éditeur-du-site">Éditeur du site</h3>
-
-<p>Ce site est édité par <a href="https://syntoralis.eu">Syntoralis</a> pour l’association Jeux Vaux, association à but non lucratif régie par la loi du 1er juillet 1901.</p>
-
-<ul>
-  <li>Siège social : 218 rue du Général de Gaulle, 78740 Vaux-sur-Seine</li>
-  <li>RNA : W781010560</li>
-  <li>SIRET : 990 316 887 00019</li>
-  <li>E-mail : <a href="mailto:asso.jeuxvaux@gmail.com">asso.jeuxvaux@gmail.com</a></li>
-</ul>
-
-<p>Le responsable de la publication est le représentant légal de Syntoralis EURL.</p>
-
-<h3 id="hébergement">Hébergement</h3>
-
-<p>Le site est hébergé et publié via GitHub Pages, un service de GitHub, Inc. Les fichiers du site sont stockés sur l’infrastructure de GitHub.</p>
-
-<h3 id="propriété-intellectuelle">Propriété intellectuelle</h3>
-
-<p>Sauf mention contraire, les textes, images et éléments présents sur ce site sont la propriété de l’association Jeux Vaux. Toute reproduction ou réutilisation nécessite l’autorisation préalable de l’association.</p>
-
-<h3 id="données-personnelles">Données personnelles</h3>
-
-<p>Les informations transmises par e-mail sont utilisées uniquement pour répondre aux demandes adressées à l’association. Elles ne sont pas cédées à des tiers à des fins commerciales.</p>
-
-<p>Pour exercer vos droits d’accès, de rectification ou de suppression, vous pouvez contacter l’association à l’adresse <a href="mailto:asso.jeuxvaux@gmail.com">asso.jeuxvaux@gmail.com</a>.</p>
+<form action="mailto:asso.jeuxvaux@gmail.com" method="post" enctype="text/plain">
+	<p>
+		<label for="nom">Nom</label>
+		<input type="text" id="nom" name="Nom" autocomplete="name" required="" />
+	</p>
+	<p>
+		<label for="email">Adresse e-mail</label>
+		<input type="email" id="email" name="E-mail" autocomplete="email" required="" />
+	</p>
+	<p>
+		<label for="message">Message</label>
+		<textarea id="message" name="Message" rows="6" required=""></textarea>
+	</p>
+	<button type="submit" class="cta-button">Préparer l’e-mail</button>
+</form>
 
 
               </div>
@@ -133,11 +123,31 @@
     </main>
 
   <footer>
+    <section class="footer-legal" aria-labelledby="legal-title">
+      <h2 id="legal-title">Mentions légales</h2>
+      <h3>Éditeur du site</h3>
+      <p>Ce site est édité par <a href="https://syntoralis.eu">Syntoralis</a> pour l’association Jeux Vaux, association à but non lucratif régie par la loi du 1er juillet 1901.</p>
+      <ul>
+        <li>Siège social : 218 rue du Général de Gaulle, 78740 Vaux-sur-Seine</li>
+        <li>RNA : W781010560</li>
+        <li>SIRET : 990 316 887 00019</li>
+        <li>E-mail : <a href="mailto:asso.jeuxvaux@gmail.com">asso.jeuxvaux@gmail.com</a></li>
+      </ul>
+      <p>Le responsable de la publication est le représentant légal de Syntoralis EURL.</p>
+      <h3>Hébergement</h3>
+      <p>Le site est hébergé et publié via <a href="https://pages.github.com/">GitHub Pages</a>, un service de <a href="https://github.com/">GitHub, Inc.</a></p>
+      <h3>Propriété intellectuelle</h3>
+      <p>Sauf mention contraire, les textes, images et éléments présents sur ce site sont la propriété de l’association Jeux Vaux. Toute reproduction ou réutilisation nécessite son autorisation préalable.</p>
+      <h3>Données personnelles</h3>
+      <p>Les informations transmises par e-mail sont utilisées uniquement pour répondre aux demandes adressées à l’association. Elles ne sont pas cédées à des tiers à des fins commerciales.</p>
+      <p>Pour exercer vos droits d’accès, de rectification ou de suppression, contactez l’association à l’adresse <a href="mailto:asso.jeuxvaux@gmail.com">asso.jeuxvaux@gmail.com</a>.</p>
+    </section>
+
     <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%; max-width: 800px; margin: 1rem auto 0; gap: 1rem;">
       <div style="flex: 1 1 150px; text-align: center; max-width: 200px;">
         <div id="ecoindex-badge"></div>        
       </div>
-      </div>
+    </div>
     <script src="https://syntoralis.eu/script.js" defer></script>
   </footer>
   </body>
