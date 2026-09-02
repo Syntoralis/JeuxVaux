@@ -116,11 +116,12 @@
 
     <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%; max-width: 800px; margin: 1rem auto 0; gap: 1rem;">
       <div style="flex: 1 1 150px; text-align: center; max-width: 200px;">
-        <div id="ecoindex-badge"></div>        
+        <a href="https://bff.ecoindex.fr/redirect/?url={{ page.url | relative_url }}" target="_blank">
+            <img src="https://bff.ecoindex.fr/badge/?theme={theme}&url={{ page.url | relative_url }}" alt="Ecoindex Badge" />
+        </a>    
       </div>
     </div>
     <script src="https://syntoralis.eu/script.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/cnumr/ecoindex_badge@3/assets/js/ecoindex-badge.js" defer></script>
   </footer>
   </body>
 </html>
