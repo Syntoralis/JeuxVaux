@@ -325,29 +325,21 @@ header {
 
 .planning-date {
   font-weight: 600;
-  color: var(--accent-color);
+  color: var(--text-color);
 }
 
 .planning-activity {
   font-weight: 500;
 }
 
-.planning-activity::before {
-  content: '·';
-  margin-right: 1rem;
+.planning-separator {
   color: var(--border-color);
+  margin: 0 0.25rem;
 }
 
 .planning-place {
-  color: var(--accent-color);
+  color: var(--text-color);
   text-decoration: underline;
-}
-
-.planning-place::before {
-  content: '·';
-  margin-right: 1rem;
-  color: var(--border-color);
-  text-decoration: none;
 }
 
 .planning-place:hover {
@@ -355,15 +347,8 @@ header {
 }
 
 .planning-calendar {
-  color: var(--accent-color);
+  color: var(--text-color);
   text-decoration: underline;
-}
-
-.planning-calendar::before {
-  content: '·';
-  margin-right: 1rem;
-  color: var(--border-color);
-  text-decoration: none;
 }
 
 .planning-calendar:hover {
