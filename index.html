@@ -151,7 +151,7 @@
 
         const activityEl = document.createElement('span');
         activityEl.className = 'planning-activity';
-        activityEl.textContent = event.activite;
+        renderTextWithLinks(activityEl, event.activite);
         item.appendChild(activityEl);
         item.appendChild(createPlanningSeparator());
 
@@ -191,6 +191,32 @@
       separator.textContent = '·';
       separator.setAttribute('aria-hidden', 'true');
       return separator;
+    }
+
+    // Rend le texte tel quel (retours à la ligne gérés en CSS) en transformant les URLs en liens
+    function renderTextWithLinks(container, text) {
+      const urlPattern = /(https?:\/\/[^\s]+)/g;
+      let lastIndex = 0;
+      let match;
+
+      while ((match = urlPattern.exec(text)) !== null) {
+        if (match.index > lastIndex) {
+          container.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+        }
+
+        const link = document.createElement('a');
+        link.href = match[0];
+        link.textContent = match[0];
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        container.appendChild(link);
+
+        lastIndex = match.index + match[0].length;
+      }
+
+      if (lastIndex < text.length) {
+        container.appendChild(document.createTextNode(text.slice(lastIndex)));
+      }
     }
 
     const DEFAULT_DURATION_MINUTES = 120;
