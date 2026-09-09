@@ -341,16 +341,32 @@ header {
   border-left-color: var(--category-sortie-color);
 }
 
+.planning-event--sortie .planning-activity {
+  color: var(--category-sortie-color);
+}
+
 .planning-event--provisoire {
   border-left-color: var(--category-provisoire-color);
+}
+
+.planning-event--provisoire .planning-activity {
+  color: var(--category-provisoire-color);
 }
 
 .planning-event--administratif {
   border-left-color: var(--category-administratif-color);
 }
 
+.planning-event--administratif .planning-activity {
+  color: var(--category-administratif-color);
+}
+
 .planning-event--autre {
   border-left-color: var(--category-autre-color);
+}
+
+.planning-event--autre .planning-activity {
+  color: var(--category-autre-color);
 }
 
 .planning-date {
