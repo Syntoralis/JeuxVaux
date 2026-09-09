@@ -26,6 +26,10 @@ Chaque rencontre devient une occasion de créer du lien, d’échanger et de s�
 
 
 
+## Prochains événements
+
+<div id="planning-list" class="planning-container" aria-live="polite">Chargement du planning…</div>
+
 ## Liens utiles
 
 - [Télécharger le bulletin d’adhésion 2026-2027]({{ '/assets/pdf/Bulletin Adhésion 2026-2027.pdf' | relative_url }})
