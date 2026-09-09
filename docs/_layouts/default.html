@@ -153,6 +153,7 @@
         activityEl.className = 'planning-activity';
         activityEl.textContent = event.activite;
         item.appendChild(activityEl);
+        item.appendChild(createPlanningSeparator());
 
         if (event.lieu) {
           const placeEl = document.createElement('a');
@@ -162,6 +163,7 @@
           placeEl.target = '_blank';
           placeEl.rel = 'noopener noreferrer';
           item.appendChild(placeEl);
+          item.appendChild(createPlanningSeparator());
         }
 
         const calendarEl = document.createElement('a');
@@ -180,6 +182,15 @@
 
     function capitalize(text) {
       return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    // Séparateur visuel hors des liens, pour ne pas l'inclure dans leur zone cliquable
+    function createPlanningSeparator() {
+      const separator = document.createElement('span');
+      separator.className = 'planning-separator';
+      separator.textContent = '·';
+      separator.setAttribute('aria-hidden', 'true');
+      return separator;
     }
 
     const DEFAULT_DURATION_MINUTES = 120;
