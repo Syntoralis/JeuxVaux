@@ -290,6 +290,18 @@ header {
   margin-bottom: 1rem;
 }
 
+.planning-months {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.planning-month-title {
+  margin: 0 0 0.5rem;
+  color: var(--accent-color);
+  text-transform: capitalize;
+}
+
 .planning-events {
   list-style: none;
   margin: 0;
@@ -320,9 +332,42 @@ header {
   font-weight: 500;
 }
 
+.planning-activity::before {
+  content: '·';
+  margin-right: 1rem;
+  color: var(--border-color);
+}
+
 .planning-place {
-  color: var(--text-color);
-  opacity: 0.8;
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.planning-place::before {
+  content: '·';
+  margin-right: 1rem;
+  color: var(--border-color);
+  text-decoration: none;
+}
+
+.planning-place:hover {
+  color: var(--accent-hover);
+}
+
+.planning-calendar {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.planning-calendar::before {
+  content: '·';
+  margin-right: 1rem;
+  color: var(--border-color);
+  text-decoration: none;
+}
+
+.planning-calendar:hover {
+  color: var(--accent-hover);
 }
 
 /* --- SECTIONS & CONTACT --- */
