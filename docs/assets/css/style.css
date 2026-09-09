@@ -24,6 +24,12 @@
   --success-color: #1B5E20; 
   --error-bg-field: rgba(248, 30, 30, 0.1);
   --transition-speed: 0.3s;
+
+  /* Catégories planning (Contraste > 7:1 sur blanc) */
+  --category-sortie-color: #0D47A1;
+  --category-provisoire-color: #7A4100;
+  --category-administratif-color: #4A148C;
+  --category-autre-color: #424242;
 }
 
 [data-theme="dark"] {
@@ -40,6 +46,12 @@
   
   --focus-outline: 3px solid #69F0AE;
   --error-color: #ff8a80; /* Rouge clair pour contraste sur noir */
+
+  /* Catégories planning (Contraste > 7:1 sur noir) */
+  --category-sortie-color: #82B1FF;
+  --category-provisoire-color: #FFD180;
+  --category-administratif-color: #B388FF;
+  --category-autre-color: #BDBDBD;
 }
 
 /* ==========================================================================
@@ -323,6 +335,22 @@ header {
   border-left: 4px solid var(--accent-color);
   border-radius: 6px;
   background: var(--card-bg);
+}
+
+.planning-event--sortie {
+  border-left-color: var(--category-sortie-color);
+}
+
+.planning-event--provisoire {
+  border-left-color: var(--category-provisoire-color);
+}
+
+.planning-event--administratif {
+  border-left-color: var(--category-administratif-color);
+}
+
+.planning-event--autre {
+  border-left-color: var(--category-autre-color);
 }
 
 .planning-date {

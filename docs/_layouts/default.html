@@ -82,6 +82,7 @@
         const dureeIndex = header.indexOf('durée');
         const activiteIndex = header.indexOf('activité');
         const lieuIndex = header.indexOf('lieu');
+        const categorieIndex = header.indexOf('catégorie');
 
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -92,7 +93,8 @@
             heure: cols[heureIndex]?.trim() ?? '',
             duree: cols[dureeIndex]?.trim() ?? '',
             activite: cols[activiteIndex]?.trim() ?? '',
-            lieu: cols[lieuIndex]?.trim() ?? ''
+            lieu: cols[lieuIndex]?.trim() ?? '',
+            categorie: cols[categorieIndex]?.trim() ?? ''
           }))
           .filter(event => event.date && event.date >= today)
           .sort((a, b) => a.date - b.date);
@@ -136,6 +138,9 @@
 
         const item = document.createElement('li');
         item.className = 'planning-event';
+
+        const categoryClass = getCategoryClass(event.categorie);
+        if (categoryClass) item.classList.add(categoryClass);
 
         const formattedDate = event.date.toLocaleDateString('fr-FR', {
           weekday: 'long',
@@ -182,6 +187,24 @@
 
     function capitalize(text) {
       return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    const PLANNING_CATEGORY_CLASSES = {
+      sortie: 'planning-event--sortie',
+      provisoire: 'planning-event--provisoire',
+      administratif: 'planning-event--administratif',
+      autre: 'planning-event--autre'
+    };
+
+    // Vide ou non reconnue => pas de classe, garde la bordure verte par défaut
+    function getCategoryClass(categorie) {
+      const key = categorie
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+      return PLANNING_CATEGORY_CLASSES[key] ?? null;
     }
 
     // Séparateur visuel hors des liens, pour ne pas l'inclure dans leur zone cliquable
