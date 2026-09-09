@@ -28,6 +28,14 @@ Chaque rencontre devient une occasion de créer du lien, d’échanger et de s�
 
 ## Prochains événements
 
+<ul class="planning-legend">
+	<li><span class="planning-legend-swatch"></span>Animation de l'association</li>
+	<li><span class="planning-legend-swatch planning-legend-swatch--sortie"></span>Idées Sorties Ludiques</li>
+	<li><span class="planning-legend-swatch planning-legend-swatch--provisoire"></span>Provisoire</li>
+	<li><span class="planning-legend-swatch planning-legend-swatch--administratif"></span>Administratif de l'association</li>
+	<li><span class="planning-legend-swatch planning-legend-swatch--autre"></span>Animations ville et/ou autres associations</li>
+</ul>
+
 <div id="planning-list" class="planning-container" aria-live="polite">Chargement du planning…</div>
 
 ## Liens utiles
