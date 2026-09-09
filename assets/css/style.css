@@ -302,6 +302,45 @@ header {
   margin-bottom: 1rem;
 }
 
+.planning-legend {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+.planning-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.planning-legend-swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 3px;
+  background: var(--accent-color);
+}
+
+.planning-legend-swatch--sortie {
+  background: var(--category-sortie-color);
+}
+
+.planning-legend-swatch--provisoire {
+  background: var(--category-provisoire-color);
+}
+
+.planning-legend-swatch--administratif {
+  background: var(--category-administratif-color);
+}
+
+.planning-legend-swatch--autre {
+  background: var(--category-autre-color);
+}
+
 .planning-months {
   display: flex;
   flex-direction: column;
