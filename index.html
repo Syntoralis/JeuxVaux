@@ -79,6 +79,7 @@
         const header = rows[0].map(cell => cell.trim().toLowerCase());
         const dateIndex = header.indexOf('date');
         const heureIndex = header.indexOf('heure');
+        const dureeIndex = header.indexOf('durée');
         const activiteIndex = header.indexOf('activité');
         const lieuIndex = header.indexOf('lieu');
 
@@ -89,6 +90,7 @@
           .map(cols => ({
             date: parseFrenchDate(cols[dateIndex]),
             heure: cols[heureIndex]?.trim() ?? '',
+            duree: cols[dureeIndex]?.trim() ?? '',
             activite: cols[activiteIndex]?.trim() ?? '',
             lieu: cols[lieuIndex]?.trim() ?? ''
           }))
@@ -107,10 +109,31 @@
         return;
       }
 
-      const list = document.createElement('ul');
-      list.className = 'planning-events';
+      const wrapper = document.createElement('div');
+      wrapper.className = 'planning-months';
+
+      let currentMonthKey = null;
+      let list = null;
 
       events.forEach(event => {
+        const monthKey = `${event.date.getFullYear()}-${event.date.getMonth()}`;
+
+        if (monthKey !== currentMonthKey) {
+          currentMonthKey = monthKey;
+
+          const monthTitle = document.createElement('h3');
+          monthTitle.className = 'planning-month-title';
+          monthTitle.textContent = capitalize(event.date.toLocaleDateString('fr-FR', {
+            month: 'long',
+            year: 'numeric'
+          }));
+          wrapper.appendChild(monthTitle);
+
+          list = document.createElement('ul');
+          list.className = 'planning-events';
+          wrapper.appendChild(list);
+        }
+
         const item = document.createElement('li');
         item.className = 'planning-event';
 
@@ -132,16 +155,104 @@
         item.appendChild(activityEl);
 
         if (event.lieu) {
-          const placeEl = document.createElement('span');
+          const placeEl = document.createElement('a');
           placeEl.className = 'planning-place';
           placeEl.textContent = event.lieu;
+          placeEl.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.lieu)}`;
+          placeEl.target = '_blank';
+          placeEl.rel = 'noopener noreferrer';
           item.appendChild(placeEl);
         }
+
+        const calendarEl = document.createElement('a');
+        calendarEl.className = 'planning-calendar';
+        calendarEl.textContent = 'Ajouter à mon calendrier';
+        calendarEl.href = buildGoogleCalendarUrl(event);
+        calendarEl.target = '_blank';
+        calendarEl.rel = 'noopener noreferrer';
+        item.appendChild(calendarEl);
 
         list.appendChild(item);
       });
 
-      container.replaceChildren(list);
+      container.replaceChildren(wrapper);
+    }
+
+    function capitalize(text) {
+      return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    const DEFAULT_DURATION_MINUTES = 120;
+
+    // Format attendu : "20h30" ou "20h"
+    function parseFrenchTime(value) {
+      if (!value) return null;
+
+      const match = value.trim().match(/^(\d{1,2})h(\d{2})?$/i);
+      if (!match) return null;
+
+      const hours = Number(match[1]);
+      const minutes = match[2] ? Number(match[2]) : 0;
+
+      return hours <= 23 && minutes <= 59 ? { hours, minutes } : null;
+    }
+
+    // Format attendu : "4h" ou "1h30"
+    function parseDurationMinutes(value) {
+      const time = parseFrenchTime(value);
+      return time ? time.hours * 60 + time.minutes : null;
+    }
+
+    function pad(number) {
+      return String(number).padStart(2, '0');
+    }
+
+    function toCalendarDateOnly(date) {
+      return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}`;
+    }
+
+    function toCalendarDateTime(date) {
+      return `${toCalendarDateOnly(date)}T${pad(date.getHours())}${pad(date.getMinutes())}00`;
+    }
+
+    // Sans heure valide, l'événement est créé en journée entière
+    function getEventDateTimes(event) {
+      const time = parseFrenchTime(event.heure);
+
+      if (!time) {
+        const start = new Date(event.date);
+        const end = new Date(start);
+        end.setDate(end.getDate() + 1);
+        return { start, end, allDay: true };
+      }
+
+      const start = new Date(event.date);
+      start.setHours(time.hours, time.minutes, 0, 0);
+
+      const durationMinutes = parseDurationMinutes(event.duree) ?? DEFAULT_DURATION_MINUTES;
+      const end = new Date(start.getTime() + durationMinutes * 60000);
+
+      return { start, end, allDay: false };
+    }
+
+    function buildGoogleCalendarUrl(event) {
+      const { start, end, allDay } = getEventDateTimes(event);
+
+      const params = new URLSearchParams({
+        action: 'TEMPLATE',
+        text: event.activite
+      });
+
+      if (allDay) {
+        params.set('dates', `${toCalendarDateOnly(start)}/${toCalendarDateOnly(end)}`);
+      } else {
+        params.set('dates', `${toCalendarDateTime(start)}/${toCalendarDateTime(end)}`);
+        params.set('ctz', 'Europe/Paris');
+      }
+
+      if (event.lieu) params.set('location', event.lieu);
+
+      return `https://www.google.com/calendar/render?${params.toString()}`;
     }
 
     // Analyseur CSV minimal gérant les champs entre guillemets
