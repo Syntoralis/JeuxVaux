@@ -55,7 +55,146 @@
 
         window.location.href = `mailto:asso.jeuxvaux@gmail.com?subject=${subject}&body=${body}`;
       });
+
+      loadPlanning();
     });
+
+    // La feuille doit être partagée en "Lecteur - Toute personne disposant du lien"
+    const PLANNING_SHEET_ID = '19CdsSGgkJ9fu2IlxOLrYDf0DhIdv2EjmDJybqctSZ1A';
+    const PLANNING_SHEET_GID = '0';
+
+    async function loadPlanning() {
+      const container = document.getElementById('planning-list');
+      if (!container) return;
+
+      const csvUrl = `https://docs.google.com/spreadsheets/d/${PLANNING_SHEET_ID}/export?format=csv&gid=${PLANNING_SHEET_GID}`;
+
+      try {
+        const response = await fetch(csvUrl);
+        if (!response.ok) throw new Error('Réponse réseau invalide');
+
+        const rows = parsePlanningCsv(await response.text());
+        if (rows.length < 2) throw new Error('Feuille vide');
+
+        const header = rows[0].map(cell => cell.trim().toLowerCase());
+        const dateIndex = header.indexOf('date');
+        const heureIndex = header.indexOf('heure');
+        const activiteIndex = header.indexOf('activité');
+        const lieuIndex = header.indexOf('lieu');
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const events = rows.slice(1)
+          .map(cols => ({
+            date: parseFrenchDate(cols[dateIndex]),
+            heure: cols[heureIndex]?.trim() ?? '',
+            activite: cols[activiteIndex]?.trim() ?? '',
+            lieu: cols[lieuIndex]?.trim() ?? ''
+          }))
+          .filter(event => event.date && event.date >= today)
+          .sort((a, b) => a.date - b.date);
+
+        renderPlanning(container, events);
+      } catch (error) {
+        container.textContent = 'Le planning est momentanément indisponible.';
+      }
+    }
+
+    function renderPlanning(container, events) {
+      if (events.length === 0) {
+        container.textContent = 'Aucun événement à venir pour le moment.';
+        return;
+      }
+
+      const list = document.createElement('ul');
+      list.className = 'planning-events';
+
+      events.forEach(event => {
+        const item = document.createElement('li');
+        item.className = 'planning-event';
+
+        const formattedDate = event.date.toLocaleDateString('fr-FR', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        });
+
+        const dateEl = document.createElement('span');
+        dateEl.className = 'planning-date';
+        dateEl.textContent = event.heure ? `${formattedDate} – ${event.heure}` : formattedDate;
+        item.appendChild(dateEl);
+
+        const activityEl = document.createElement('span');
+        activityEl.className = 'planning-activity';
+        activityEl.textContent = event.activite;
+        item.appendChild(activityEl);
+
+        if (event.lieu) {
+          const placeEl = document.createElement('span');
+          placeEl.className = 'planning-place';
+          placeEl.textContent = event.lieu;
+          item.appendChild(placeEl);
+        }
+
+        list.appendChild(item);
+      });
+
+      container.replaceChildren(list);
+    }
+
+    // Analyseur CSV minimal gérant les champs entre guillemets
+    function parsePlanningCsv(text) {
+      const rows = [];
+      let row = [];
+      let field = '';
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+
+        if (inQuotes) {
+          if (char === '"') {
+            if (text[i + 1] === '"') { field += '"'; i++; }
+            else inQuotes = false;
+          } else field += char;
+        } else if (char === '"') {
+          inQuotes = true;
+        } else if (char === ',') {
+          row.push(field);
+          field = '';
+        } else if (char === '\n' || char === '\r') {
+          if (char === '\r' && text[i + 1] === '\n') i++;
+          row.push(field);
+          field = '';
+          if (row.some(cell => cell !== '')) rows.push(row);
+          row = [];
+        } else {
+          field += char;
+        }
+      }
+
+      if (field || row.length) {
+        row.push(field);
+        rows.push(row);
+      }
+
+      return rows;
+    }
+
+    function parseFrenchDate(value) {
+      if (!value) return null;
+
+      const match = value.trim().match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/);
+      if (!match) return null;
+
+      const [, day, month, year] = match;
+      const fullYear = year.length === 2 ? `20${year}` : year;
+      const date = new Date(Number(fullYear), Number(month) - 1, Number(day));
+
+      return Number.isNaN(date.getTime()) ? null : date;
+    }
     </script>
   </head>
   <body>
@@ -105,6 +244,10 @@
 	<source src="/JeuxVaux/video/2026-2027JeuxVauxDiaporama.mp4" type="video/mp4" />
 	Votre navigateur ne prend pas en charge la lecture vidéo.
 </video>
+
+<h2 id="prochains-événements">Prochains événements</h2>
+
+<div id="planning-list" class="planning-container" aria-live="polite">Chargement du planning…</div>
 
 <h2 id="liens-utiles">Liens utiles</h2>
 

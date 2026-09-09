@@ -285,6 +285,46 @@ header {
   margin-bottom: 0.5rem; 
 }
 
+/* --- PLANNING --- */
+.planning-container {
+  margin-bottom: 1rem;
+}
+
+.planning-events {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.planning-event {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 6px;
+  background: var(--card-bg);
+}
+
+.planning-date {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.planning-activity {
+  font-weight: 500;
+}
+
+.planning-place {
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
 /* --- SECTIONS & CONTACT --- */
 .section { 
   padding: 0rem 1.5rem; 
