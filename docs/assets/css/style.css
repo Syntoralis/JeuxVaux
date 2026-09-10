@@ -293,6 +293,101 @@ header {
   margin-bottom: 1rem; 
 }
 
+/* --- CAROUSEL JEUX --- */
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carousel-viewport {
+  overflow: hidden;
+  flex: 1 1 auto;
+}
+
+.carousel-track {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--card-bg);
+}
+
+.carousel-slide img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.carousel-info {
+  flex: 1 1 200px;
+}
+
+.carousel-info h3 {
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.carousel-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-badges span {
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+.carousel-description {
+  color: var(--text-color);
+  white-space: pre-line;
+}
+
+.carousel-prev,
+.carousel-next {
+  flex: 0 0 auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--accent-color);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.carousel-status {
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--text-color);
+}
+
 .card ul li { 
   margin-bottom: 0.5rem; 
 }

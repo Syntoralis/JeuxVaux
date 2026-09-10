@@ -24,7 +24,9 @@ Chaque rencontre devient une occasion de créer du lien, d’échanger et de s�
 	Votre navigateur ne prend pas en charge la lecture vidéo.
 </video>
 
+## Nos Jeux
 
+<div id="games-carousel" aria-live="polite">Chargement des jeux…</div>
 
 ## Prochains événements
 
