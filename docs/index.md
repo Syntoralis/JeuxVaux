@@ -42,6 +42,7 @@ Chaque rencontre devient une occasion de créer du lien, d’échanger et de s�
 
 - [Télécharger le bulletin d’adhésion 2026-2027]({{ '/assets/pdf/Bulletin Adhésion 2026-2027.pdf' | relative_url }})
 - [Télécharger le règlement intérieur 2026-2027]({{ '/assets/pdf/Reglement Intérieur Saison 2026 2027.pdf' | relative_url }})
+- [Boutique Pay Asso](https://www.monetico-online-asso.com/jeux-vaux/achats)
 - [Rejoindre notre groupe Facebook](https://www.facebook.com/groups/1741403396511568)
 
 ## Nous contacter
