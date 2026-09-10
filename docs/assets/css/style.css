@@ -303,10 +303,12 @@ header {
 .carousel-viewport {
   overflow: hidden;
   flex: 1 1 auto;
+  min-width: 0;
 }
 
 .carousel-track {
   display: flex;
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
