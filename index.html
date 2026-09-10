@@ -57,11 +57,16 @@
       });
 
       loadPlanning();
+      loadGamesCarousel();
     });
 
     // La feuille doit être partagée en "Lecteur - Toute personne disposant du lien"
     const PLANNING_SHEET_ID = '19CdsSGgkJ9fu2IlxOLrYDf0DhIdv2EjmDJybqctSZ1A';
     const PLANNING_SHEET_GID = '0';
+
+    // La feuille doit être partagée en "Lecteur - Toute personne disposant du lien"
+    const GAMES_SHEET_ID = '1xIgSM78lFBz9GBZ9soAKVOypZ9Amf-O_G_x3FmXK1iM';
+    const GAMES_SHEET_GID = '0';
 
     async function loadPlanning() {
       const container = document.getElementById('planning-list');
@@ -73,7 +78,7 @@
         const response = await fetch(csvUrl);
         if (!response.ok) throw new Error('Réponse réseau invalide');
 
-        const rows = parsePlanningCsv(await response.text());
+        const rows = parseCsv(await response.text());
         if (rows.length < 2) throw new Error('Feuille vide');
 
         const header = rows[0].map(cell => cell.trim().toLowerCase());
@@ -183,6 +188,152 @@
       });
 
       container.replaceChildren(wrapper);
+    }
+
+    async function loadGamesCarousel() {
+      const container = document.getElementById('games-carousel');
+      if (!container) return;
+
+      const csvUrl = `https://docs.google.com/spreadsheets/d/${GAMES_SHEET_ID}/export?format=csv&gid=${GAMES_SHEET_GID}`;
+
+      try {
+        const response = await fetch(csvUrl);
+        if (!response.ok) throw new Error('Réponse réseau invalide');
+
+        const rows = parseCsv(await response.text());
+        if (rows.length < 2) throw new Error('Feuille vide');
+
+        const header = rows[0].map(cell => cell.trim().toLowerCase());
+        const nomIndex = header.indexOf('nom du jeu');
+        const ageIndex = header.indexOf('âge');
+        const joueursIndex = header.indexOf('joueurs');
+        const tempsIndex = header.indexOf('temps');
+        const typeIndex = header.indexOf('type de jeu');
+        const principeIndex = header.indexOf('principe');
+        const imageIndex = header.indexOf('lien image');
+
+        const games = rows.slice(1)
+          .map(cols => ({
+            nom: cols[nomIndex]?.trim() ?? '',
+            age: cols[ageIndex]?.trim() ?? '',
+            joueurs: cols[joueursIndex]?.trim() ?? '',
+            temps: cols[tempsIndex]?.trim() ?? '',
+            type: cols[typeIndex]?.trim() ?? '',
+            principe: cols[principeIndex]?.trim() ?? '',
+            image: cols[imageIndex]?.trim() ?? ''
+          }))
+          .filter(game => game.nom);
+
+        renderGamesCarousel(container, games);
+      } catch (error) {
+        container.textContent = 'La liste des jeux est momentanément indisponible.';
+      }
+    }
+
+    function renderGamesCarousel(container, games) {
+      if (games.length === 0) {
+        container.textContent = 'Aucun jeu à afficher pour le moment.';
+        return;
+      }
+
+      const carousel = document.createElement('div');
+      carousel.className = 'carousel';
+      carousel.setAttribute('role', 'region');
+      carousel.setAttribute('aria-roledescription', 'carrousel');
+      carousel.setAttribute('aria-label', 'Nos jeux');
+
+      const viewport = document.createElement('div');
+      viewport.className = 'carousel-viewport';
+
+      const track = document.createElement('ul');
+      track.className = 'carousel-track';
+
+      games.forEach(game => {
+        const slide = document.createElement('li');
+        slide.className = 'carousel-slide';
+        slide.setAttribute('aria-roledescription', 'diapositive');
+
+        if (game.image) {
+          const img = document.createElement('img');
+          img.src = game.image;
+          img.alt = game.nom;
+          img.loading = 'lazy';
+          slide.appendChild(img);
+        }
+
+        const info = document.createElement('div');
+        info.className = 'carousel-info';
+
+        const title = document.createElement('h3');
+        title.textContent = game.nom;
+        info.appendChild(title);
+
+        const badges = document.createElement('p');
+        badges.className = 'carousel-badges';
+        [
+          game.age && `${game.age}`,
+          game.joueurs && `${game.joueurs} joueurs`,
+          game.temps && `${game.temps}`,
+          game.type
+        ].filter(Boolean).forEach(text => {
+          const badge = document.createElement('span');
+          badge.textContent = text;
+          badges.appendChild(badge);
+        });
+        info.appendChild(badges);
+
+        if (game.principe) {
+          const description = document.createElement('p');
+          description.className = 'carousel-description';
+          description.textContent = game.principe;
+          info.appendChild(description);
+        }
+
+        slide.appendChild(info);
+        track.appendChild(slide);
+      });
+
+      viewport.appendChild(track);
+
+      const prevButton = document.createElement('button');
+      prevButton.type = 'button';
+      prevButton.className = 'carousel-prev';
+      prevButton.setAttribute('aria-label', 'Jeu précédent');
+      prevButton.textContent = '‹';
+
+      const nextButton = document.createElement('button');
+      nextButton.type = 'button';
+      nextButton.className = 'carousel-next';
+      nextButton.setAttribute('aria-label', 'Jeu suivant');
+      nextButton.textContent = '›';
+
+      const status = document.createElement('p');
+      status.className = 'carousel-status';
+      status.setAttribute('aria-live', 'polite');
+
+      let currentIndex = 0;
+      const slides = Array.from(track.children);
+
+      const updateCarousel = () => {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        status.textContent = `${currentIndex + 1} / ${slides.length}`;
+        slides.forEach((slide, index) => slide.setAttribute('aria-hidden', String(index !== currentIndex)));
+      };
+
+      prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+      });
+
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+      });
+
+      carousel.append(prevButton, viewport, nextButton);
+      container.replaceChildren(carousel, status);
+
+      updateCarousel();
     }
 
     function capitalize(text) {
@@ -316,7 +467,7 @@
     }
 
     // Analyseur CSV minimal gérant les champs entre guillemets
-    function parsePlanningCsv(text) {
+    function parseCsv(text) {
       const rows = [];
       let row = [];
       let field = '';
@@ -415,6 +566,10 @@
 	<source src="/JeuxVaux/video/2026-2027JeuxVauxDiaporama.mp4" type="video/mp4" />
 	Votre navigateur ne prend pas en charge la lecture vidéo.
 </video>
+
+<h2 id="nos-jeux">Nos Jeux</h2>
+
+<div id="games-carousel" aria-live="polite">Chargement des jeux…</div>
 
 <h2 id="prochains-événements">Prochains événements</h2>
 
