@@ -416,6 +416,7 @@ header {
 .planning-activity {
   font-weight: 500;
   white-space: pre-line;
+  color: var(--accent-color);
 }
 
 .planning-separator {
