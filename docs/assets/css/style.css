@@ -141,6 +141,7 @@ a:hover {
 
 .col {
   flex: 1 1 100%;
+  min-width: 0;
   padding: 0 1rem;
 }
 
