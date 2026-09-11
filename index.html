@@ -213,25 +213,38 @@
         const prixIndex = header.indexOf('prix / distinctions');
         const interetIndex = header.indexOf("intérêt pour l'association");
         const imageIndex = header.indexOf('lien image');
+        const dateAchatIndex = header.indexOf('date achat');
 
         const games = rows.slice(1)
-          .map(cols => ({
-            nom: cols[nomIndex]?.trim() ?? '',
-            age: cols[ageIndex]?.trim() ?? '',
-            joueurs: cols[joueursIndex]?.trim() ?? '',
-            temps: cols[tempsIndex]?.trim() ?? '',
-            type: cols[typeIndex]?.trim() ?? '',
-            principe: cols[principeIndex]?.trim() ?? '',
-            prix: cols[prixIndex]?.trim() ?? '',
-            interet: cols[interetIndex]?.trim() ?? '',
-            image: cols[imageIndex]?.trim() ?? ''
-          }))
-          .filter(game => game.nom);
+          .map(cols => {
+            const dateAchat = parseFrenchDate(cols[dateAchatIndex]);
+            return {
+              nom: cols[nomIndex]?.trim() ?? '',
+              age: cols[ageIndex]?.trim() ?? '',
+              joueurs: cols[joueursIndex]?.trim() ?? '',
+              temps: cols[tempsIndex]?.trim() ?? '',
+              type: cols[typeIndex]?.trim() ?? '',
+              principe: cols[principeIndex]?.trim() ?? '',
+              prix: cols[prixIndex]?.trim() ?? '',
+              interet: cols[interetIndex]?.trim() ?? '',
+              image: cols[imageIndex]?.trim() ?? '',
+              nouveaute: isSameQuarter(dateAchat, new Date())
+            };
+          })
+          .filter(game => game.nom)
+          .sort((a, b) => Number(b.nouveaute) - Number(a.nouveaute));
 
         renderGamesCarousel(container, games);
       } catch (error) {
         container.textContent = 'La liste des jeux est momentanément indisponible.';
       }
+    }
+
+    // Même trimestre calendaire (janv-mars, avr-juin, juil-sept, oct-déc) et même année
+    function isSameQuarter(date, reference) {
+      if (!date) return false;
+      const quarter = d => Math.floor(d.getMonth() / 3);
+      return date.getFullYear() === reference.getFullYear() && quarter(date) === quarter(reference);
     }
 
     function renderGamesCarousel(container, games) {
@@ -255,6 +268,7 @@
       games.forEach(game => {
         const slide = document.createElement('li');
         slide.className = 'carousel-slide';
+        if (game.nouveaute) slide.classList.add('carousel-slide--nouveaute');
         slide.setAttribute('aria-roledescription', 'diapositive');
 
         if (game.image) {
@@ -275,6 +289,7 @@
         const badges = document.createElement('p');
         badges.className = 'carousel-badges';
         [
+          game.nouveaute && 'Nouveauté',
           game.age && `${game.age}`,
           game.joueurs && `${game.joueurs} joueurs`,
           game.temps && `${game.temps}`,
@@ -282,6 +297,7 @@
         ].filter(Boolean).forEach(text => {
           const badge = document.createElement('span');
           badge.textContent = text;
+          if (text === 'Nouveauté') badge.classList.add('carousel-badge--nouveaute');
           badges.appendChild(badge);
         });
         info.appendChild(badges);
