@@ -364,6 +364,14 @@ header {
   white-space: pre-line;
 }
 
+.carousel-prix,
+.carousel-interet {
+  color: var(--text-color);
+  white-space: pre-line;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
 .carousel-prev,
 .carousel-next {
   flex: 0 0 auto;

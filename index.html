@@ -210,6 +210,8 @@
         const tempsIndex = header.indexOf('temps');
         const typeIndex = header.indexOf('type de jeu');
         const principeIndex = header.indexOf('principe');
+        const prixIndex = header.indexOf('prix / distinctions');
+        const interetIndex = header.indexOf("intérêt pour l'association");
         const imageIndex = header.indexOf('lien image');
 
         const games = rows.slice(1)
@@ -220,6 +222,8 @@
             temps: cols[tempsIndex]?.trim() ?? '',
             type: cols[typeIndex]?.trim() ?? '',
             principe: cols[principeIndex]?.trim() ?? '',
+            prix: cols[prixIndex]?.trim() ?? '',
+            interet: cols[interetIndex]?.trim() ?? '',
             image: cols[imageIndex]?.trim() ?? ''
           }))
           .filter(game => game.nom);
@@ -287,6 +291,20 @@
           description.className = 'carousel-description';
           description.textContent = game.principe;
           info.appendChild(description);
+        }
+
+        if (game.prix) {
+          const prix = document.createElement('p');
+          prix.className = 'carousel-prix';
+          prix.textContent = `Prix / Distinctions : ${game.prix}`;
+          info.appendChild(prix);
+        }
+
+        if (game.interet) {
+          const interet = document.createElement('p');
+          interet.className = 'carousel-interet';
+          interet.textContent = `Intérêt pour l'association : ${game.interet}`;
+          info.appendChild(interet);
         }
 
         slide.appendChild(info);
