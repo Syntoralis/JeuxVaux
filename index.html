@@ -68,6 +68,45 @@
     const GAMES_SHEET_ID = '1xIgSM78lFBz9GBZ9soAKVOypZ9Amf-O_G_x3FmXK1iM';
     const GAMES_SHEET_GID = '0';
 
+    // Dossier Drive partagé contenant les images des jeux (partagé "Lecteur - Toute personne disposant du lien")
+    const GAMES_DRIVE_FOLDER_ID = '1LoYKK0p2CBG0cRYHFdIDXsuU0ruTTqN7';
+    // Clé API Google Cloud (Drive API activée), restreinte par référent HTTP à votre domaine
+    const GAMES_DRIVE_API_KEY = 'AIzaSyA3SlgUt1gebuE7DHzaLpnLaqZSC_F6gac';
+
+    // Associe le nom (sans accents/casse) de chaque image png/jpg/webp du dossier Drive à son URL directe
+    async function loadDriveImageMap() {
+      const map = new Map();
+      const url = `https://www.googleapis.com/drive/v3/files?q='${GAMES_DRIVE_FOLDER_ID}'+in+parents+and+trashed=false&fields=files(id,name)&pageSize=1000&key=${GAMES_DRIVE_API_KEY}`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Réponse réseau invalide');
+
+        const data = await response.json();
+        (data.files ?? [])
+          .filter(file => /\.(png|jpe?g|webp)$/i.test(file.name))
+          .forEach(file => {
+            const key = normalizeFileName(file.name.replace(/\.[^.]+$/, ''));
+            if (!map.has(key)) {
+              map.set(key, `https://lh3.googleusercontent.com/d/${file.id}=w800`);
+            }
+          });
+      } catch (error) {
+        // Le carrousel s'affichera sans images si le dossier Drive est indisponible
+      }
+
+      return map;
+    }
+
+    // Insensible à la casse et aux accents, pour faire correspondre "Nom du Jeu" et nom de fichier
+    function normalizeFileName(text) {
+      return text
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+    }
+
     async function loadPlanning() {
       const container = document.getElementById('planning-list');
       if (!container) return;
@@ -197,7 +236,10 @@
       const csvUrl = `https://docs.google.com/spreadsheets/d/${GAMES_SHEET_ID}/export?format=csv&gid=${GAMES_SHEET_GID}`;
 
       try {
-        const response = await fetch(csvUrl);
+        const [response, imageMap] = await Promise.all([
+          fetch(csvUrl),
+          loadDriveImageMap()
+        ]);
         if (!response.ok) throw new Error('Réponse réseau invalide');
 
         const rows = parseCsv(await response.text());
@@ -212,14 +254,14 @@
         const principeIndex = header.indexOf('principe');
         const prixIndex = header.indexOf('prix / distinctions');
         const interetIndex = header.indexOf("intérêt pour l'association");
-        const imageIndex = header.indexOf('lien image');
         const dateAchatIndex = header.indexOf('date achat');
 
         const games = rows.slice(1)
           .map(cols => {
             const dateAchat = parseFrenchDate(cols[dateAchatIndex]);
+            const nom = cols[nomIndex]?.trim() ?? '';
             return {
-              nom: cols[nomIndex]?.trim() ?? '',
+              nom,
               age: cols[ageIndex]?.trim() ?? '',
               joueurs: cols[joueursIndex]?.trim() ?? '',
               temps: cols[tempsIndex]?.trim() ?? '',
@@ -227,7 +269,7 @@
               principe: cols[principeIndex]?.trim() ?? '',
               prix: cols[prixIndex]?.trim() ?? '',
               interet: cols[interetIndex]?.trim() ?? '',
-              image: cols[imageIndex]?.trim() ?? '',
+              image: imageMap.get(normalizeFileName(nom)) ?? '',
               nouveaute: isSameQuarter(dateAchat, new Date())
             };
           })
