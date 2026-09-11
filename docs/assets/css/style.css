@@ -30,6 +30,9 @@
   --category-provisoire-color: #7A4100;
   --category-administratif-color: #4A148C;
   --category-autre-color: #424242;
+
+  /* Mise en avant Nouveauté (Contraste > 7:1 sur blanc) */
+  --highlight-color: #B71C1C;
 }
 
 [data-theme="dark"] {
@@ -52,6 +55,9 @@
   --category-provisoire-color: #FFD180;
   --category-administratif-color: #B388FF;
   --category-autre-color: #BDBDBD;
+
+  /* Mise en avant Nouveauté (Contraste > 7:1 sur noir) */
+  --highlight-color: #FF8A80;
 }
 
 /* ==========================================================================
@@ -307,7 +313,7 @@ header {
   min-width: 0;
 }
 
-.carousel-track {
+.carousel-viewport .carousel-track {
   display: flex;
   width: 100%;
   list-style: none;
@@ -325,6 +331,10 @@ header {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background: var(--card-bg);
+}
+
+.carousel-slide--nouveaute {
+  border: 2px solid var(--highlight-color);
 }
 
 .carousel-slide img {
@@ -357,6 +367,12 @@ header {
   border-radius: 999px;
   padding: 0.1rem 0.6rem;
   font-size: 0.85rem;
+}
+
+.carousel-badge--nouveaute {
+  border-color: var(--highlight-color) !important;
+  color: var(--highlight-color) !important;
+  font-weight: 600;
 }
 
 .carousel-description {
