@@ -442,7 +442,7 @@ header {
   align-items: center;
   gap: 0.4rem;
   padding: 0.2rem 0.35rem;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   border-radius: 4px;
   color: var(--text-color);
   background: transparent;
