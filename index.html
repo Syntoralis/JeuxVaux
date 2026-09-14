@@ -58,7 +58,26 @@
 
       loadPlanning();
       loadGamesCarousel();
+
+      document.querySelectorAll('.planning-legend-button').forEach(button => {
+        button.addEventListener('click', () => {
+          const selectedCategory = button.getAttribute('aria-pressed') === 'true'
+            ? null
+            : button.dataset.category;
+
+          document.querySelectorAll('.planning-legend-button').forEach(legendButton => {
+            legendButton.setAttribute(
+              'aria-pressed',
+              String(legendButton === button && selectedCategory !== null)
+            );
+          });
+
+          if (planningEvents) renderPlanning(document.getElementById('planning-list'), planningEvents, selectedCategory);
+        });
+      });
     });
+
+    let planningEvents = null;
 
     // La feuille doit être partagée en "Lecteur - Toute personne disposant du lien"
     const PLANNING_SHEET_ID = '19CdsSGgkJ9fu2IlxOLrYDf0DhIdv2EjmDJybqctSZ1A';
@@ -143,14 +162,19 @@
           .filter(event => event.date && event.date >= today)
           .sort((a, b) => a.date - b.date);
 
+        planningEvents = events;
         renderPlanning(container, events);
       } catch (error) {
         container.textContent = 'Le planning est momentanément indisponible.';
       }
     }
 
-    function renderPlanning(container, events) {
-      if (events.length === 0) {
+    function renderPlanning(container, events, selectedCategory = null) {
+      const visibleEvents = selectedCategory
+        ? events.filter(event => getCategoryKey(event.categorie) === selectedCategory)
+        : events;
+
+      if (visibleEvents.length === 0) {
         container.textContent = 'Aucun événement à venir pour le moment.';
         return;
       }
@@ -161,7 +185,7 @@
       let currentMonthKey = null;
       let list = null;
 
-      events.forEach(event => {
+      visibleEvents.forEach(event => {
         const monthKey = `${event.date.getFullYear()}-${event.date.getMonth()}`;
 
         if (monthKey !== currentMonthKey) {
@@ -425,13 +449,19 @@
 
     // Vide ou non reconnue => pas de classe, garde la bordure verte par défaut
     function getCategoryClass(categorie) {
+      const key = getCategoryKey(categorie);
+
+      return PLANNING_CATEGORY_CLASSES[key] ?? null;
+    }
+
+    function getCategoryKey(categorie) {
       const key = categorie
         .trim()
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '');
 
-      return PLANNING_CATEGORY_CLASSES[key] ?? null;
+      return PLANNING_CATEGORY_CLASSES[key] ? key : 'animation';
     }
 
     // Séparateur visuel hors des liens, pour ne pas l'inclure dans leur zone cliquable
@@ -650,11 +680,11 @@
 <h2 id="prochains-événements">Prochains événements</h2>
 
 <ul class="planning-legend">
-	<li><span class="planning-legend-swatch"></span>Animation de l'association</li>
-	<li><span class="planning-legend-swatch planning-legend-swatch--sortie"></span>Idées Sorties Ludiques</li>
-	<li><span class="planning-legend-swatch planning-legend-swatch--provisoire"></span>Provisoire</li>
-	<li><span class="planning-legend-swatch planning-legend-swatch--administratif"></span>Administratif de l'association</li>
-	<li><span class="planning-legend-swatch planning-legend-swatch--autre"></span>Animations ville et/ou autres associations</li>
+	<li><button type="button" class="planning-legend-button" data-category="animation" aria-pressed="false"><span class="planning-legend-swatch"></span>Animation de l'association</button></li>
+	<li><button type="button" class="planning-legend-button" data-category="sortie" aria-pressed="false"><span class="planning-legend-swatch planning-legend-swatch--sortie"></span>Idées Sorties Ludiques</button></li>
+	<li><button type="button" class="planning-legend-button" data-category="provisoire" aria-pressed="false"><span class="planning-legend-swatch planning-legend-swatch--provisoire"></span>Provisoire</button></li>
+	<li><button type="button" class="planning-legend-button" data-category="administratif" aria-pressed="false"><span class="planning-legend-swatch planning-legend-swatch--administratif"></span>Administratif de l'association</button></li>
+	<li><button type="button" class="planning-legend-button" data-category="autre" aria-pressed="false"><span class="planning-legend-swatch planning-legend-swatch--autre"></span>Animations ville et/ou autres associations</button></li>
 </ul>
 
 <div id="planning-list" class="planning-container" aria-live="polite">Chargement du planning…</div>
