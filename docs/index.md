@@ -68,5 +68,26 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 	<button type="submit" class="cta-button">Préparer l’e-mail</button>
 </form>
 
+## Nos Partenaires
 
+<div class="partners-grid">
+	<article class="partner-card partner-card--ludipack">
+		<div class="partner-card-header">
+			<h3>Ludipack</h3>
+			<span class="partner-card-level">Partenaire</span>
+		</div>
+		<div class="partner-card-illustration" aria-hidden="true"><span>L</span></div>
+		<p class="partner-card-description">Matériel, accessoires et solutions pratiques pour vos moments ludiques.</p>
+		<a class="cta-button" href="https://www.ludipack.fr/" target="_blank" rel="noopener noreferrer">Découvrir Ludipack</a>
+	</article>
+	<article class="partner-card partner-card--philibert">
+		<div class="partner-card-header">
+			<h3>Philibert</h3>
+			<span class="partner-card-level">Partenaire</span>
+		</div>
+		<div class="partner-card-illustration" aria-hidden="true"><span>P</span></div>
+		<p class="partner-card-description">Une large sélection de jeux de société pour tous les âges et toutes les envies.</p>
+		<a class="cta-button" href="https://www.philibertnet.com/fr/" target="_blank" rel="noopener noreferrer">Découvrir Philibert</a>
+	</article>
+</div>
 
