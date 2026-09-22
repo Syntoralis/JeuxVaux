@@ -87,15 +87,17 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<img src="https://yt3.googleusercontent.com/Eleup9Sc2sG5166tfe3s0xWDEX_xja-SgThVYQqJqSQQW_peVBNSfJx9XRByJegUeuac_iiaKw=s120-c-k-c0x00ffffff-no-rj" alt="Logo LudiPack">
 			</div>
 			<div class="partner-card-stats">
-				<div><span>ATTAQUE</span><strong>Rangement rapide</strong></div>
-				<div><span>PUISSANCE</span><strong>90</strong></div>
+				<div><span>ATTAQUE 1</span><strong>Rangement rapide</strong><em>Puissance 90</em></div>
+				<div><span>ATTAQUE 2</span><strong>Insert sur mesure</strong><em>Puissance 88</em></div>
+				<div><span>ATTAQUE 3</span><strong>Stockage malin</strong><em>Puissance 80</em></div>
+				<div><span>ATTAQUE 4</span><strong>Prêt à l’emploi</strong><em>Puissance 78</em></div>
 			</div>
 			<div class="partner-card-talents">
 				<div><b>+</b><p><strong>Accessoires ludiques</strong><span>Des équipements pratiques pour enrichir vos parties.</span></p></div>
 				<div><b>+</b><p><strong>Esprit de partage</strong><span>Un partenaire attentif aux besoins des passionnés de jeux.</span></p></div>
 			</div>
 			<div class="partner-card-footer">
-				<span>Faiblesse : désordre x2</span>
+				<span>Faiblesse : Envie x999</span>
 				<a href="https://www.ludipack.fr/" target="_blank" rel="noopener noreferrer">Voir le site</a>
 			</div>
 			<p class="partner-card-legal">© 2025 LudiPack. Tous droits réservés.</p>
@@ -116,15 +118,17 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<img src="https://www.philibertnet.com/build/assets/logo-Cnv0IsyE.svg" alt="Logo Philibert">
 			</div>
 			<div class="partner-card-stats">
-				<div><span>ATTAQUE</span><strong>Conseil ludique</strong></div>
-				<div><span>PUISSANCE</span><strong>95</strong></div>
+				<div><span>ATTAQUE 1</span><strong>Conseil ludique</strong><em>Puissance 70</em></div>
+				<div><span>ATTAQUE 2</span><strong>Découverte ciblée</strong><em>Puissance 82</em></div>
+				<div><span>ATTAQUE 3</span><strong>Catalogue vaste</strong><em>Puissance 99</em></div>
+				<div><span>ATTAQUE 4</span><strong>Bonnes idées</strong><em>Puissance 88</em></div>
 			</div>
 			<div class="partner-card-talents">
 				<div><b>+</b><p><strong>Jeux pour tous</strong><span>Une sélection pour tous les âges et toutes les envies.</span></p></div>
 				<div><b>+</b><p><strong>Découvertes ludiques</strong><span>De nouveaux univers à explorer autour de la table.</span></p></div>
 			</div>
 			<div class="partner-card-footer">
-				<span>Faiblesse : rupture de stock x2</span>
+				<span>Faiblesse : Multiplicateur d'envie x999</span>
 				<a href="https://www.philibertnet.com/fr/" target="_blank" rel="noopener noreferrer">Voir le site</a>
 			</div>
 			<p class="partner-card-legal">© 2025 Philibert. Tous droits réservés.</p>
