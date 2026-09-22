@@ -71,23 +71,69 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 ## Nos Partenaires
 
 <div class="partners-grid">
-	<article class="partner-card partner-card--ludipack">
-		<div class="partner-card-header">
-			<h3>Ludipack</h3>
-			<span class="partner-card-level">Partenaire</span>
+	<article class="partner-card-border">
+		<div class="partner-card partner-card--ludipack">
+			<div class="partner-card-header">
+				<div>
+					<span class="partner-card-level">Partenaire officiel</span>
+					<h3>Ludipack</h3>
+				</div>
+				<span class="partner-card-status">JEUX</span>
+			</div>
+			<div class="partner-card-sector">
+				<span>Univers : matériel ludique</span>
+				<span class="partner-card-type">Accessoires</span>
+			</div>
+			<div class="partner-card-illustration" aria-hidden="true">
+				<div><span>L</span><p>Partenaire Jeux Vaux</p></div>
+				<strong>*</strong>
+			</div>
+			<div class="partner-card-stats">
+				<div><span>SPÉCIALITÉ</span><strong>Matériel de jeu</strong></div>
+				<div><span>ATOUT</span><strong>Solutions pratiques</strong></div>
+			</div>
+			<div class="partner-card-talents">
+				<div><b>+</b><p><strong>Accessoires ludiques</strong><span>Des équipements pratiques pour enrichir vos parties.</span></p></div>
+				<div><b>+</b><p><strong>Esprit de partage</strong><span>Un partenaire attentif aux besoins des passionnés de jeux.</span></p></div>
+			</div>
+			<div class="partner-card-footer">
+				<span>Partenaire de Jeux Vaux</span>
+				<a href="https://www.ludipack.fr/" target="_blank" rel="noopener noreferrer">Voir le site</a>
+			</div>
+			<p class="partner-card-legal">Partenaire certifié Jeux Vaux</p>
 		</div>
-		<div class="partner-card-illustration" aria-hidden="true"><span>L</span></div>
-		<p class="partner-card-description">Matériel, accessoires et solutions pratiques pour vos moments ludiques.</p>
-		<a class="cta-button" href="https://www.ludipack.fr/" target="_blank" rel="noopener noreferrer">Découvrir Ludipack</a>
 	</article>
-	<article class="partner-card partner-card--philibert">
-		<div class="partner-card-header">
-			<h3>Philibert</h3>
-			<span class="partner-card-level">Partenaire</span>
+	<article class="partner-card-border">
+		<div class="partner-card partner-card--philibert">
+			<div class="partner-card-header">
+				<div>
+					<span class="partner-card-level">Partenaire officiel</span>
+					<h3>Philibert</h3>
+				</div>
+				<span class="partner-card-status">JEUX</span>
+			</div>
+			<div class="partner-card-sector">
+				<span>Univers : jeux de société</span>
+				<span class="partner-card-type">Boutique</span>
+			</div>
+			<div class="partner-card-illustration" aria-hidden="true">
+				<div><span>P</span><p>Partenaire Jeux Vaux</p></div>
+				<strong>*</strong>
+			</div>
+			<div class="partner-card-stats">
+				<div><span>SPÉCIALITÉ</span><strong>Jeux de société</strong></div>
+				<div><span>ATOUT</span><strong>Large sélection</strong></div>
+			</div>
+			<div class="partner-card-talents">
+				<div><b>+</b><p><strong>Jeux pour tous</strong><span>Une sélection pour tous les âges et toutes les envies.</span></p></div>
+				<div><b>+</b><p><strong>Découvertes ludiques</strong><span>De nouveaux univers à explorer autour de la table.</span></p></div>
+			</div>
+			<div class="partner-card-footer">
+				<span>Partenaire de Jeux Vaux</span>
+				<a href="https://www.philibertnet.com/fr/" target="_blank" rel="noopener noreferrer">Voir le site</a>
+			</div>
+			<p class="partner-card-legal">Partenaire certifié Jeux Vaux</p>
 		</div>
-		<div class="partner-card-illustration" aria-hidden="true"><span>P</span></div>
-		<p class="partner-card-description">Une large sélection de jeux de société pour tous les âges et toutes les envies.</p>
-		<a class="cta-button" href="https://www.philibertnet.com/fr/" target="_blank" rel="noopener noreferrer">Découvrir Philibert</a>
 	</article>
 </div>
 
