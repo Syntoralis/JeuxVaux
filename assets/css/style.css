@@ -455,7 +455,7 @@ header {
   gap: 0.5rem;
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
-  border-bottom: 2px solid var(--partner-accent);
+  border-bottom: 2px solid var(--accent-color);
 }
 
 .partner-card h3 {
@@ -467,14 +467,14 @@ header {
 
 .partner-card-level {
   display: block;
-  color: var(--partner-accent);
+  color: var(--accent-color);
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .partner-card-status {
-  color: var(--partner-accent);
+  color: var(--accent-color);
   font-size: 1rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -494,7 +494,7 @@ header {
 .partner-card-type {
   padding: 0.15rem 0.5rem;
   color: var(--partner-surface);
-  background: var(--partner-accent);
+  background: var(--accent-color);
   border-radius: 999px;
   font-size: 0.65rem;
   font-style: normal;
@@ -591,7 +591,7 @@ header {
 .partner-card-footer a {
   padding: 0.35rem 0.6rem;
   color: var(--partner-surface);
-  background: var(--partner-accent);
+  background: var(--accent-color);
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 700;
