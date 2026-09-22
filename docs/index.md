@@ -84,7 +84,7 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<span class="partner-card-type">Type : Organisation</span>
 			</div>
 			<div class="partner-card-illustration">
-				<img src="https://www.ludipack.fr/favicon.ico" alt="Logo LudiPack">
+				<img src="https://yt3.googleusercontent.com/Eleup9Sc2sG5166tfe3s0xWDEX_xja-SgThVYQqJqSQQW_peVBNSfJx9XRByJegUeuac_iiaKw=s120-c-k-c0x00ffffff-no-rj" alt="Logo LudiPack">
 			</div>
 			<div class="partner-card-stats">
 				<div><span>ATTAQUE</span><strong>Rangement rapide</strong></div>
@@ -113,7 +113,7 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<span class="partner-card-type">Type : Découverte</span>
 			</div>
 			<div class="partner-card-illustration">
-				<img src="https://www.philibertnet.com/favicon.ico" alt="Logo Philibert">
+				<img src="https://www.philibertnet.com/build/assets/logo-Cnv0IsyE.svg" alt="Logo Philibert">
 			</div>
 			<div class="partner-card-stats">
 				<div><span>ATTAQUE</span><strong>Conseil ludique</strong></div>

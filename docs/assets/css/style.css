@@ -38,9 +38,7 @@
   --partner-surface: var(--card-bg);
   --partner-border: #7c2d12;
   --partner-text: var(--text-color);
-  --partner-muted-text: #334155;
   --partner-accent: #9a3412;
-  --partner-accent-hover: #7c2d12;
   --partner-highlight: #fff3cd;
   --partner-highlight-border: #9a3412;
   --partner-art-bg: #e0f2fe;
@@ -74,9 +72,7 @@
   --partner-surface: var(--card-bg);
   --partner-border: #fbbf24;
   --partner-text: var(--text-color);
-  --partner-muted-text: #e2e8f0;
   --partner-accent: #fbbf24;
-  --partner-accent-hover: #fde68a;
   --partner-highlight: #374151;
   --partner-highlight-border: #fbbf24;
   --partner-art-bg: #334155;
@@ -496,7 +492,7 @@ header {
   justify-content: space-between;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
-  color: var(--partner-muted-text);
+  color: var(--partner-text);
   font-size: 0.75rem;
   font-style: italic;
 }
@@ -555,7 +551,7 @@ header {
 .partner-card-stats span,
 .partner-card-talents span {
   display: block;
-  color: var(--partner-muted-text);
+  color: var(--partner-text);
   font-size: 0.65rem;
 }
 
@@ -590,7 +586,7 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  color: var(--partner-muted-text);
+  color: var(--partner-text);
   font-size: 0.65rem;
 }
 
@@ -608,14 +604,9 @@ header {
   text-decoration: none;
 }
 
-.partner-card-footer a:hover {
-  color: var(--partner-text);
-  background: var(--partner-accent-hover);
-}
-
 .partner-card-legal {
   margin: 0.6rem 0 0;
-  color: var(--partner-muted-text);
+  color: var(--partner-text);
   font-size: 0.6rem;
   text-align: center;
 }
