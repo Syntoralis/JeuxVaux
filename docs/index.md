@@ -84,9 +84,8 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<span>Univers : matériel ludique</span>
 				<span class="partner-card-type">Accessoires</span>
 			</div>
-			<div class="partner-card-illustration" aria-hidden="true">
-				<div><span>L</span><p>Partenaire Jeux Vaux</p></div>
-				<strong>*</strong>
+			<div class="partner-card-illustration">
+				<img src="https://www.ludipack.fr/favicon.ico" alt="Logo LudiPack">
 			</div>
 			<div class="partner-card-stats">
 				<div><span>SPÉCIALITÉ</span><strong>Matériel de jeu</strong></div>
@@ -100,7 +99,7 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<span>Partenaire de Jeux Vaux</span>
 				<a href="https://www.ludipack.fr/" target="_blank" rel="noopener noreferrer">Voir le site</a>
 			</div>
-			<p class="partner-card-legal">Partenaire certifié Jeux Vaux</p>
+			<p class="partner-card-legal">© 2025 LudiPack. Tous droits réservés.</p>
 		</div>
 	</article>
 	<article class="partner-card-border">
@@ -116,9 +115,8 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<span>Univers : jeux de société</span>
 				<span class="partner-card-type">Boutique</span>
 			</div>
-			<div class="partner-card-illustration" aria-hidden="true">
-				<div><span>P</span><p>Partenaire Jeux Vaux</p></div>
-				<strong>*</strong>
+			<div class="partner-card-illustration">
+				<img src="https://www.philibertnet.com/favicon.ico" alt="Logo Philibert">
 			</div>
 			<div class="partner-card-stats">
 				<div><span>SPÉCIALITÉ</span><strong>Jeux de société</strong></div>
@@ -132,7 +130,7 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<span>Partenaire de Jeux Vaux</span>
 				<a href="https://www.philibertnet.com/fr/" target="_blank" rel="noopener noreferrer">Voir le site</a>
 			</div>
-			<p class="partner-card-legal">Partenaire certifié Jeux Vaux</p>
+			<p class="partner-card-legal">© 2025 Philibert. Tous droits réservés.</p>
 		</div>
 	</article>
 </div>
