@@ -35,12 +35,9 @@
   --highlight-color: #B71C1C;
 
   /* Cartes partenaires (contrastes AA minimum) */
-  --partner-frame-start: #7c2d12;
-  --partner-frame-middle: #9a3412;
-  --partner-frame-end: #7c2d12;
-  --partner-surface: #fffdf5;
+  --partner-surface: var(--card-bg);
   --partner-border: #7c2d12;
-  --partner-text: #1f2937;
+  --partner-text: var(--text-color);
   --partner-muted-text: #334155;
   --partner-accent: #9a3412;
   --partner-accent-hover: #7c2d12;
@@ -74,12 +71,9 @@
   --highlight-color: #FF8A80;
 
   /* Cartes partenaires (contrastes AA minimum) */
-  --partner-frame-start: #fbbf24;
-  --partner-frame-middle: #f59e0b;
-  --partner-frame-end: #d97706;
-  --partner-surface: #1f2937;
+  --partner-surface: var(--card-bg);
   --partner-border: #fbbf24;
-  --partner-text: #f8fafc;
+  --partner-text: var(--text-color);
   --partner-muted-text: #e2e8f0;
   --partner-accent: #fbbf24;
   --partner-accent-hover: #fde68a;
@@ -455,18 +449,6 @@ header {
   gap: 1.5rem;
 }
 
-.partner-card-border {
-  padding: 12px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, var(--partner-frame-start) 0%, var(--partner-frame-middle) 50%, var(--partner-frame-end) 100%);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.partner-card-border:hover {
-  transform: translateY(-5px);
-}
-
 .partner-card {
   padding: 1rem;
   color: var(--partner-text);
@@ -503,8 +485,9 @@ header {
 
 .partner-card-status {
   color: var(--partner-accent);
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 800;
+  text-transform: uppercase;
 }
 
 .partner-card-sector {
@@ -576,6 +559,10 @@ header {
   font-size: 0.65rem;
 }
 
+.partner-card-stats strong {
+  color: var(--partner-text);
+}
+
 .partner-card-talents {
   padding-bottom: 0.75rem;
   margin-bottom: 0.65rem;
@@ -605,6 +592,10 @@ header {
   gap: 0.5rem;
   color: var(--partner-muted-text);
   font-size: 0.65rem;
+}
+
+.partner-card-footer > span {
+  font-weight: 700;
 }
 
 .partner-card-footer a {
