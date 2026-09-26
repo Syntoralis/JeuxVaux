@@ -468,7 +468,7 @@ header {
 .partner-card-level {
   display: block;
   color: var(--accent-color);
-  font-size: 0.65rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -496,7 +496,7 @@ header {
   color: var(--partner-surface);
   background: var(--accent-color);
   border-radius: 999px;
-  font-size: 0.65rem;
+  font-size: 0.8125rem;
   font-style: normal;
   font-weight: 700;
   text-transform: uppercase;
@@ -538,7 +538,7 @@ header {
   margin-bottom: 0.75rem;
   background: var(--card-bg);
   border: 1px solid var(--accent-color);
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   text-align: center;
 }
 
@@ -546,7 +546,7 @@ header {
 .partner-card-talents span {
   display: block;
   color: var(--partner-text);
-  font-size: 0.65rem;
+  font-size: 0.9rem;
 }
 
 .partner-card-stats strong {
@@ -571,7 +571,7 @@ header {
 
 .partner-card-talents p {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   line-height: 1.25;
 }
 
@@ -581,7 +581,7 @@ header {
   justify-content: space-between;
   gap: 0.5rem;
   color: var(--partner-text);
-  font-size: 0.65rem;
+  font-size: 0.9rem;
 }
 
 .partner-card-footer > span {
@@ -593,7 +593,7 @@ header {
   color: var(--partner-surface);
   background: var(--accent-color);
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-weight: 700;
   text-decoration: none;
 }
@@ -601,7 +601,7 @@ header {
 .partner-card-legal {
   margin: 0.6rem 0 0;
   color: var(--partner-text);
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   text-align: center;
 }
 
