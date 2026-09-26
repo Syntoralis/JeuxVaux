@@ -87,7 +87,7 @@ Vous pouvez nous écrire directement à l’aide de ce formulaire. L’envoi ouv
 				<img src="https://yt3.googleusercontent.com/Eleup9Sc2sG5166tfe3s0xWDEX_xja-SgThVYQqJqSQQW_peVBNSfJx9XRByJegUeuac_iiaKw=s120-c-k-c0x00ffffff-no-rj" alt="Logo LudiPack">
 			</div>
 			<div class="partner-card-stats">
-				<div><span>ATTAQUE 1</span><strong>Rangement rapide <em>90</em></strong></div>
+				<div><span>ATTAQUE 1</span><strong>Rangement éclair <em>90</em></strong></div>
 				<div><span>ATTAQUE 2</span><strong>Insert sur mesure <em>88</em></strong></div>
 				<div><span>ATTAQUE 3</span><strong>Stockage malin <em>80</em></strong></div>
 				<div><span>ATTAQUE 4</span><strong>Prêt à l’emploi <em>78</em></strong></div>
