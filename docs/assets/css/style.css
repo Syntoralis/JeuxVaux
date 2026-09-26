@@ -32,13 +32,13 @@
   --category-autre-color: #424242;
 
   /* Mise en avant Nouveauté (Contraste > 7:1 sur blanc) */
-  --highlight-color: #B71C1C;
+  --highlight-color: #9A1717;
 
   /* Cartes partenaires (contrastes AA minimum) */
   --partner-surface: var(--card-bg);
   --partner-border: #7c2d12;
   --partner-text: var(--text-color);
-  --partner-accent: #9a3412;
+  --partner-accent: #922F11;
 }
 
 [data-theme="dark"] {
