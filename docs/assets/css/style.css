@@ -352,9 +352,11 @@ header {
 .carousel-slide img {
   width: 100%;
   max-width: 240px;
-  height: auto;
+  height: 240px;
   border-radius: 6px;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background-color: var(--card-bg);
 }
 
 .carousel-info {
